@@ -1,22 +1,27 @@
 pipeline {
-    agent any
-
-    stages {
-
-        stage('Terraform Init') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform init'
-                }
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform apply -auto-approve'
-                }
-            }
-        }
-    }
-}
+	agent any 
+			
+			stages{
+				 
+				 stage('Terraform int') {
+				 	steps{
+				 			sh 'terraform init '
+				 			}
+				 		}
+				 stage('Terraform validate') {
+				 	steps{
+				 			sh 'terraform validate'
+				 			}
+				 		}
+				 stage(Terraform Plan') {
+				 	steps{
+				 			sh 'terraform plan'
+				 			}
+				 		}
+				 stage ('Terraform Apply') {
+				 	steps{
+				 			sh 'terraform apply -auto-approve '
+				 			}
+				 		}
+				 	}
+				 }
